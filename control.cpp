@@ -1,5 +1,5 @@
 
-//#pragma comment(linker,"/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
+//#pragma comment(linker,"/subsystem:\"windows\" /entry:\"mainCRTStartup\"" ) //将控制台隐藏
 
 #include <stdio.h>
 #include <windows.h>
@@ -39,15 +39,15 @@ int main()
 		 
 		GetPCCmd("cui",msg);//接收微信端发送给ID为xxy的数据，并存放在msg中  （通过微信工作号：IT魔君  输入：急急如律令 打开连接，芝麻关门 断开连接。）
 		printf("%s\n",msg);
-		if(strstr(msg,"播放"))
+		if(strstr(msg,"播放音乐"))
 		{
 			mciSendString("play bg.mp3",NULL,0,NULL);
 		}
-		else if(strstr(msg,"停止"))
+		else if(strstr(msg,"停止音乐"))
 		{
 			mciSendString("stop bg.mp3",NULL,0,NULL);
 		}
-		else if(strstr(msg,"暂停"))
+		else if(strstr(msg,"暂停音乐"))
 		{
 			mciSendString("pause bg.mp3",NULL,0,NULL);
 		}
@@ -94,16 +94,16 @@ int main()
 			ShowWindow(desktop,SW_SHOW);//显示任务栏
 		}
 
-		else if(strstr(msg,"百度"))
+		else if(strstr(msg,"打开百度"))
 		{
 			WinExec("explorer http://www.baidu.com",1);
 		}
-		else if(strstr(msg,"淘宝"))
+		else if(strstr(msg,"打开淘宝"))
 		{
 			WinExec("explorer http://www.taobao.com",1);
 		}
 
-		else if(strstr(msg,"显示字幕"))
+		else if(strstr(msg,"显示字幕")) //在电脑窗口显示文字
 		{
 			//在桌面上显示一句话 通过线程解决
 			iShowText=1;
@@ -113,8 +113,8 @@ int main()
 			iShowText=0;
 		}
 
-		else if(strstr(msg,"弹出消息框"))
-		{
+		else if(strstr(msg,"弹出消息框"))   //在电脑窗口弹出一个消息框
+		{ 
 			//在桌面上显示一句话 通过线程解决
 			iMessageBox=1;
 		}
