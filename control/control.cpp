@@ -81,7 +81,7 @@ int main()
 			taskker = FindWindow("Shell_TrayWnd",NULL);//找到任务栏句柄
 		
 			ShowWindow(desktop,SW_HIDE);//隐藏桌面窗口
-			ShowWindow(desktop,SW_HIDE);//隐藏任务栏
+			ShowWindow(taskker,SW_HIDE);//隐藏任务栏
 		}
 		else if(strstr(msg,"显示桌面"))
 		{
@@ -91,7 +91,7 @@ int main()
 			taskker = FindWindow("Shell_TrayWnd",NULL);//找到任务栏句柄
 		
 			ShowWindow(desktop,SW_SHOW);//显示桌面窗口
-			ShowWindow(desktop,SW_SHOW);//显示任务栏
+			ShowWindow(taskker,SW_SHOW);//显示任务栏
 		}
 
 		else if(strstr(msg,"打开百度"))
