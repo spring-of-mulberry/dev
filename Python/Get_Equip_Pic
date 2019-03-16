@@ -1,0 +1,21 @@
+import requests
+import os
+
+from urllib.request import urlretrieve  #获取指定地址数据
+
+header = {
+    "Accept-Encoding":"gzip, deflate",
+    "Accept-Charset":"UTF-8",
+    "Connection":"keep-alive"
+}
+
+res = requests.get(url="http://gamehelper.gm825.com/wzry/equip/list?game_id=7622",headers = header).json()
+#print(res)
+for equip in res["list"]:
+    pic_url = equip["icon"]
+    equip_name = equip["name"]+".jpg"
+    filename = './images2/'+equip_name
+    if 'images2' not in os.listdir():
+        os.makedirs("images2")
+    urlretrieve(pic_url,filename = filename)
+    print('[INFO]:GET %s picture... '%(equip['name']))
