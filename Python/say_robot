@@ -1,0 +1,31 @@
+import json
+from urllib import request,parse
+
+#请求数据
+def Get_Robot_Reply(input_text):
+    data={
+        "reqType":0,
+        "perception": {
+            "inputText": {
+                "text":input_text
+            }
+        },
+        "userInfo": {
+            "apiKey": "0674aa75102948b3b804aaf881b89a5d",
+            "userId": "415022"
+        }
+    }
+    #将请求数据转换为json格式
+    data = json.dumps(data,ensure_ascii=False).encode("UTF-8")
+    url = request.Request("http://openapi.tuling123.com/openapi/api/v2",data=data,method="POST")
+    res = request.urlopen(url).read()
+    res = json.loads(res.decode("UTF-8"))
+    return res['results'][0]['values']['text']
+
+def main():
+    while True:
+        input_text = input("\n我说:")
+        print("\n你说：",Get_Robot_Reply(input_text),sep='')
+
+if  __name__=="__main__":
+    main()
