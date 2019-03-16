@@ -169,7 +169,7 @@ DWORD WINAPI MessageBoxThr(LPVOID IpPara)
 
 		}else
 		{
-			Sleep(1000);
+			Sleep(1000); 
 		}
 	}
 }
